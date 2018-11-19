@@ -1,0 +1,140 @@
+<html>
+        <h2>
+            Welcome to World of Chess
+        </h2>
+</html>
+    
+
+<script>
+    "using strict"
+    console.log("Welcome to the world of Chess");
+
+//base class
+     class Pieces  {
+            constructor(id,position,image,color,points,isAlive)
+            {
+                this.id = id;
+                this.position = position; 
+                this.image = image;
+                this.color = color;
+                this.points = points;
+                this.isAlive = isAlive;
+            }
+
+        }
+
+// king class
+    class King extends Pieces {
+            constructor(id,position,color,isAlive) 
+            {
+                super(id,position,"King",color,"10",isAlive);
+            }
+        movement(){
+                return "King moves 1 step";
+            }
+    }
+   
+// Queen Class
+   class Queen extends Pieces {
+            constructor(id,position,color,isAlive)
+            {
+                super(color,position,"Queen",id,"9",isAlive);
+            }
+            movement(n){
+                return "Queen moves " + n +" step";
+            }
+    }
+
+// Bishop Class
+   class Bishop extends Pieces {
+        constructor(id,position,color,isAlive)
+        {
+                super(id,position,"Bishop",color,"3",isAlive);         
+        }
+        movement(n){
+                return "Bishop moves " + n +" step";
+            }
+   }
+
+// Rook Class
+   class Rook extends Pieces{
+        constructor(id,position,color,isAlive)
+        {
+            super(id,position,"Rook",color,"5",isAlive);
+        }
+        movement(n){
+                return "Rook moves " + n +" step";
+            }
+   }
+// Knight Class
+   class Knight extends Pieces{
+        constructor(id,position,color,isAlive)
+        {
+            super(id,position,"Knight",color,"3",isAlive);
+        }
+        movement(){
+                return "Knight moves 2-1/2 step";
+            }
+   }
+// Pawn Class
+  class Pawn extends Pieces
+  {
+        constructor(id,position,color,isAlive){
+            super(id,position,"Pawn",color,"1",isAlive);
+        }
+        movement(){
+                return "Pawn moves 1 step";
+            }
+  }
+
+// Object of King Class
+  let k1 = new King("k1","1*4","black","yes");
+  let k2 = new King("k2","8*5","white","yes");
+   // console.log(k1.movement());
+   // console.log(k2.movement());
+
+// Object of Queen Class
+  let q1 = new Queen("q1","1*5","black","yes");
+  let q2 = new Queen("q2","8*4","white","yes");
+  //  console.log(q1.movement(4));
+  //  console.log(q2.movement(5));
+
+// Object of Bishop Class
+  let b1 = new Bishop("b1","1*3","black","yes");
+  let b2 = new Bishop("b2","1*6","black","yes");
+  let b3 = new Bishop("b3","8*3","white","yes");
+  let b4 = new Bishop("b4","8*6","white","yes");
+
+// Object of Rook Class
+  let r1 = new Rook("r1","1*1","black","yes");
+  let r2 = new Rook("r2","1*8","black","yes");
+  let r3 = new Rook("r3","8*1","white","yes");
+  let r4 = new Rook("r4","8*8","white","yes");
+
+// Object of Knight Class
+  let kn1 = new Knight("k1","1*2","black","yes");
+  let kn2 = new Knight("k2","1*7","black","yes");
+  let kn3 = new Knight("k3","8*3","white","yes");
+  let kn4 = new Knight("k4","8*7","white","yes");
+
+// Object of Pawn Class
+  let p1 = new Pawn("p1","2*1","black","yes");
+  let p2 = new Pawn("p2","2*2","black","yes");
+  let p3 = new Pawn("p3","2*3","black","yes");
+  let p4 = new Pawn("p4","2*4","black","yes");
+  let p5 = new Pawn("p5","2*5","black","yes");
+  let p6 = new Pawn("p6","2*6","black","yes");
+  let p7 = new Pawn("p7","2*7","black","yes");
+  let p8 = new Pawn("p8","2*8","black","yes");
+
+  let p9 = new Pawn("p9","7*1","white","yes");
+  let p10 = new Pawn("p10","7*2","white","yes");
+  let p11 = new Pawn("p11","7*3","white","yes");
+  let p12 = new Pawn("p12","7*4","white","yes");
+  let p13 = new Pawn("p13","7*5","white","yes");
+  let p14 = new Pawn("p14","7*6","white","yes");
+  let p15 = new Pawn("p15","7*7","white","yes");
+  let p16 = new Pawn("p16","7*8","white","yes");
+  console.dir(p16);
+  
+</script>
