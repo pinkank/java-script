@@ -118,51 +118,11 @@ console.log("Welcome to the world of Chess");
 // Object of Queen Class
   let q1 = new Queen("q1","1*5",pieceColor.black,"yes");
   let q2 = new Queen("q2","8*4",pieceColor.white,"yes");
-
-  for ( i in pieceName) {
-      if(i == "bishop") {
-        for( var j = 1; j < 3; j++){
-                const bIdBlack = j + 'bb';
-                bishop.push(new Bishop(bIdBlack,null,pieceColor.black,"yes"));
-                const bIdWhite = j + 'bw';
-                bishop.push(new Bishop(bIdWhite,null,pieceColor.white,"yes")); 
-            }  
-        }
-      else if ( i == "rook") {
-        for (var j = 1; j < 3 ; j++) {
-                const rIdBlack = j + 'rb';
-                const rIdWhite = j + 'rw';
-                rook.push(new Rook(rIdBlack,null,pieceColor.black,"yes"));
-                rook.push(new Rook(rIdWhite,null,pieceColor.white,"yes"));
-        }
-      }
-      else if ( i == "knight") {
-          for(var j =1; j < 3; j++){
-                const kIdBlack = j + 'kb';
-                const kIdWhite = j + 'kw';
-                knight.push(new Knight(kIdBlack,null,pieceColor.black,"yes"));
-                knight.push(new Knight(kIdWhite,null,pieceColor.white,"yes"));
-            }   
-      }
-      /*else if (i == "pawn") {
-          for (var j = 1; j < 9; j++) {
-                  const pIdWhite = j + 'pw';
-                  const pIdBlack = j + 'pb';
-                  const position = '2 * ' + j;
-                  pawn.push(new Pawn(pIdWhite,position,pieceColor.white,"yes"));
-                  pawn.push(new Pawn(pIdBlack,position,pieceColor.black,"yes"));
-          }
-      }*/
-  }
-
-  
-  
   
 function insertImage( pName, color) {
     const sourceId = "./pieces/";
     return sourceId + pieceColor[color] + pieceImage[pName];
 }
-
   
 function chessDisplay() {
     var table = document.getElementById("chessboard");
@@ -182,44 +142,59 @@ function chessDisplay() {
                     var imageTemp = insertImage(pieceName.pawn,pieceColor.black); 
                     const pIdBlack = j + 'pb';
                     const position = i + ' * ' + j;
-                    pawn.push(new Pawn(pIdBlack,position,pieceColor.black,"yes"));
+                    pawn.push(new Pawn(pIdBlack,position,pieceColor.black,"yes")); // Object of Class Black Pawn
                 }
                 else{
                     var imageTemp = insertImage(pieceName.pawn,pieceColor.white);
-                    const pIdBlack = j + 'pw';
+                    const pIdWhite = j + 'pw';
                     const position = i + ' * ' + j;
-                    pawn.push(new Pawn(pIdBlack,position,pieceColor.white,"yes"));
+                    pawn.push(new Pawn(pIdWhite,position,pieceColor.white,"yes")); // Object of Class White Pawn
                 }
                 img.src = imageTemp;
                 cell.appendChild(img);
             }
             else if(i == 1 || i ==8) {
                 if( j==1 || j==8){
-                    if(i<2)
+                    if(i<2){
                         var imageTemp = insertImage(pieceName.rook,pieceColor.black);
-                    
-                    else
+                        const rIdBlack = j + 'rb';
+                        const position = i + ' * ' + j;
+                        rook.push(new Rook(rIdBlack,position,pieceColor.black,"yes")); // Object of Class Black Rook
+                    }
+                    else{
                         var imageTemp = insertImage(pieceName.rook,pieceColor.white);
-                    img.src = imageTemp;
-                    cell.appendChild(img);
+                        const rIdWhite = j + 'rw';
+                        const position = i + ' * ' + j;
+                        rook.push(new Rook(rIdWhite,position,pieceColor.white,"yes")); // Object of class White Rook
+                    }
                 }
                 else if( j == 2 || j == 7 ){
-                    if(i<j)
+                    if(i<j){
                         var imageTemp = insertImage(pieceName.knight,pieceColor.black);
-                    else
+                        const kIdBlack = j + 'kb';
+                        const position = i + ' * ' + j;
+                        knight.push(new Knight(kIdBlack,position,pieceColor.black,"yes")); // Object of Class Black Knight
+                    }
+                    else{
                         var imageTemp = insertImage(pieceName.knight,pieceColor.white);
-                    
-                    img.src = imageTemp;
-                    cell.appendChild(img);
+                        const kIdWhite = j + 'kw';
+                        const position = i + ' * ' + j;
+                        knight.push(new Knight(kIdWhite,position,pieceColor.white,"yes")); // Object of Class White Knight
+                    }
                 }
                 else if( j == 3 || j == 6 ){
-                    if(i<j)
+                    if(i<j){
                         var imageTemp = insertImage(pieceName.bishop,pieceColor.black);
-                    else
+                        const bIdBlack = j + 'bb';
+                        const position = i + ' * ' + j;
+                        bishop.push(new Bishop(bIdBlack,position,pieceColor.black,"yes")); // Object of Class Black Bishop
+                    }
+                    else{
                         var imageTemp = insertImage(pieceName.bishop,pieceColor.white);
-                    
-                    img.src = imageTemp;
-                    cell.appendChild(img);  
+                        const bIdWhite = j + 'bb';
+                        const position = i + ' * ' + j;
+                        bishop.push(new Bishop(bIdWhite,position,pieceColor.white,"yes")); // Object of Class White Bishop
+                    } 
                 }
                 else if( j == 4 || j == 5 ){
                     if((i+j)%2==0){
@@ -227,28 +202,26 @@ function chessDisplay() {
                             var imageTemp = insertImage(pieceName.king,pieceColor.black);
                         else
                             var imageTemp = insertImage(pieceName.king,pieceColor.white);
-                        img.src = imageTemp;
-                        cell.appendChild(img); 
                     }
                     else{
                         if(i<j)
                             var imageTemp = insertImage(pieceName.queen,pieceColor.black);
                         else
                             var imageTemp = insertImage(pieceName.queen,pieceColor.white);
-                        img.src = imageTemp;
-                        cell.appendChild(img); 
                     }
                 }
-            }
-            
-            
+                img.src = imageTemp;
+                cell.appendChild(img);
+            }   
         }
+        
     }
     console.dir(pawn);
+    console.dir(bishop);
+    console.dir(knight);
 }
 
-console.dir(bishop);
-console.dir(knight);
+
 
 
 
